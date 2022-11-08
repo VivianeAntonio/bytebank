@@ -9,11 +9,12 @@ namespace bytebank.Contas
 {
     public class ContaCorrente
     {
+        public static int TotalDeContasCriadas { get; private set; }
         public int numero_agencia;
         public int Numero_agencia
         {
             get { return this.numero_agencia; }
-            set
+            private set
             {
                 if (value > 0)
                 {
@@ -80,6 +81,13 @@ namespace bytebank.Contas
         public double GetSaldo()
         {
             return this.saldo;
+        }
+
+        public ContaCorrente(int numero_agencia, string numero_conta)
+        {
+            this.Numero_agencia = numero_agencia;
+            this.Conta = numero_conta;
+            TotalDeContasCriadas++;
         }
 
     }

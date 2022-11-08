@@ -72,19 +72,34 @@ using bytebank.Titular;
 
 //new ContaCorrente();
 
-ContaCorrente conta3 = new ContaCorrente();
-conta3.Numero_agencia = 18;
-conta3.Conta = "1011-H";
-conta3.SetSaldo(200);
-Console.WriteLine(conta3.GetSaldo());
-Console.WriteLine(conta3.Numero_agencia);
-Console.WriteLine(conta3.Conta);
+//ContaCorrente conta3 = new ContaCorrente();
+//conta3.Numero_agencia = 18;
+//conta3.Conta = "1011-H";
+//conta3.SetSaldo(200);
+//Console.WriteLine(conta3.GetSaldo());
+//Console.WriteLine(conta3.Numero_agencia);
+//Console.WriteLine(conta3.Conta);
 
-ContaCorrente conta4 = new ContaCorrente();
-conta4.Numero_agencia = 18;
-conta4.Conta = "1010-X";
-conta4.SetSaldo(500);
-conta4.Titular = new Cliente();
-Console.WriteLine(conta4.GetSaldo());
-Console.WriteLine(conta4.Numero_agencia);
+//ContaCorrente conta4 = new ContaCorrente();
+//conta4.Numero_agencia = 18;
+//conta4.Conta = "1010-X";
+//conta4.SetSaldo(500);
+//conta4.Titular = new Cliente();
+//Console.WriteLine(conta4.GetSaldo());
+//Console.WriteLine(conta4.Numero_agencia);
 
+//ContaCorrente conta4 = new ContaCorrente(18, "1158-J");
+//conta4.SetSaldo(500);
+//conta4.Titular = new Cliente();
+
+//Console.WriteLine(conta4.GetSaldo());
+//Console.WriteLine(conta4.Numero_agencia);
+
+ContaCorrente conta5 = new ContaCorrente(541, "6525-3");
+Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
+
+ContaCorrente conta6 = new ContaCorrente(841, "2555-8");
+Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
+
+ContaCorrente conta7 = new ContaCorrente(881, "2574-8");
+Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
