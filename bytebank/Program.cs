@@ -1,5 +1,6 @@
 ﻿using bytebank;
 using bytebank.Contas;
+using bytebank.Funcionarios;
 using bytebank.Titular;
 
 //ContaCorrente contaDoAndre = new ContaCorrente();
@@ -95,11 +96,19 @@ using bytebank.Titular;
 //Console.WriteLine(conta4.GetSaldo());
 //Console.WriteLine(conta4.Numero_agencia);
 
-ContaCorrente conta5 = new ContaCorrente(541, "6525-3");
-Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
+//ContaCorrente conta5 = new ContaCorrente(541, "6525-3");
+//Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
 
-ContaCorrente conta6 = new ContaCorrente(841, "2555-8");
-Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
+//ContaCorrente conta6 = new ContaCorrente(841, "2555-8");
+//Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
 
-ContaCorrente conta7 = new ContaCorrente(881, "2574-8");
-Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
+//ContaCorrente conta7 = new ContaCorrente(881, "2574-8");
+//Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
+
+Funcionario pedro = new Funcionario();
+pedro.Nome = "Pedro Malazartes";
+pedro.Cpf = "123456789";
+pedro.Salario = 2000;
+
+Console.WriteLine(pedro.Nome);
+Console.WriteLine(pedro.GetBonificacao());
