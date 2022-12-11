@@ -106,16 +106,14 @@ using bytebank.Utilitario;
 //ContaCorrente conta7 = new ContaCorrente(881, "2574-8");
 //Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
 
-Funcionario pedro = new Funcionario("123456789");
+Funcionario pedro = new Funcionario("123456789",2000);
 pedro.Nome = "Pedro Malazartes";
-pedro.Salario = 2000;
 
 Console.WriteLine(pedro.Nome);
 Console.WriteLine(pedro.GetBonificacao());
 
-Diretor roberta = new Diretor("987654321");
+Diretor roberta = new Diretor("987654321",5000);
 roberta.Nome = "Roberta Silva";
-roberta.Salario = 5000;
 
 Console.WriteLine(roberta.Nome);
 Console.WriteLine(roberta.GetBonificacao());
@@ -126,5 +124,12 @@ gerenciador.Registrar(roberta);
 
 Console.WriteLine($"Total de bonificações: {gerenciador.TotalDeBonificacao}");
 Console.WriteLine($"Total de funcionarios: {Funcionario.TotalDeFuncionarios}");
+
+pedro.AumentarSalario();
+roberta.AumentarSalario();
+
+Console.WriteLine($"Novo salario do Pedro: {pedro.Salario}");
+Console.WriteLine($"Novo salario do Roberta: {roberta.Salario}");
+
 
 
