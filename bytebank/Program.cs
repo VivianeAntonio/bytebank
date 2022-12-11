@@ -2,6 +2,7 @@
 using bytebank.Contas;
 using bytebank.Funcionarios;
 using bytebank.Titular;
+using bytebank.Utilitario;
 
 //ContaCorrente contaDoAndre = new ContaCorrente();
 //contaDoAndre.titular = "Andre Silva";
@@ -112,3 +113,17 @@ pedro.Salario = 2000;
 
 Console.WriteLine(pedro.Nome);
 Console.WriteLine(pedro.GetBonificacao());
+
+Diretor roberta = new Diretor();
+roberta.Nome = "Roberta Silva";
+roberta.Cpf = "987654321";
+roberta.Salario = 5000;
+
+Console.WriteLine(roberta.Nome);
+Console.WriteLine(roberta.GetBonificacao());
+
+GerenciadorDeBonificacao gerenciador = new GerenciadorDeBonificacao();
+gerenciador.Registrar(pedro);
+gerenciador.Registrar(roberta);
+
+Console.WriteLine($"Total de bonificações: {gerenciador.TotalDeBonificacao}");
