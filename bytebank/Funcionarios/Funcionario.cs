@@ -9,7 +9,7 @@ namespace bytebank.Funcionarios
     public class Funcionario
     {
         public string Nome { get; set; }
-        public string Cpf { get; set; }
+        public string Cpf { get; private set; }
         public double Salario { get; set; }
         public static int TotalDeFuncionarios { get; private set; }
 
@@ -23,8 +23,9 @@ namespace bytebank.Funcionarios
             return this.Salario * 0.20;
         }
 
-        public Funcionario()
+        public Funcionario(string cpf)
         {
+            this.Cpf = cpf;
             TotalDeFuncionarios++;
         }
     }

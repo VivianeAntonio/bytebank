@@ -106,17 +106,15 @@ using bytebank.Utilitario;
 //ContaCorrente conta7 = new ContaCorrente(881, "2574-8");
 //Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
 
-Funcionario pedro = new Funcionario();
+Funcionario pedro = new Funcionario("123456789");
 pedro.Nome = "Pedro Malazartes";
-pedro.Cpf = "123456789";
 pedro.Salario = 2000;
 
 Console.WriteLine(pedro.Nome);
 Console.WriteLine(pedro.GetBonificacao());
 
-Diretor roberta = new Diretor();
+Diretor roberta = new Diretor("987654321");
 roberta.Nome = "Roberta Silva";
-roberta.Cpf = "987654321";
 roberta.Salario = 5000;
 
 Console.WriteLine(roberta.Nome);

@@ -17,5 +17,9 @@ namespace bytebank.Funcionarios
             return this.Salario * base.PremioSemestral();
         }
 
+        public Diretor(string cpf): base(cpf)
+        {
+            
+        }
     }
 }
