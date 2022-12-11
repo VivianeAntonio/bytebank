@@ -10,7 +10,11 @@ namespace bytebank.Funcionarios
     {       
         public override double GetBonificacao()
         {
-            return this.Salario;
+            return this.Salario + base.GetBonificacao();
+        }
+        public override double PremioSemestral()
+        {
+            return this.Salario * base.PremioSemestral();
         }
     }
 }

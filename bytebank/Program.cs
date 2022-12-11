@@ -127,3 +127,4 @@ gerenciador.Registrar(pedro);
 gerenciador.Registrar(roberta);
 
 Console.WriteLine($"Total de bonificações: {gerenciador.TotalDeBonificacao}");
+

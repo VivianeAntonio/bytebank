@@ -16,5 +16,10 @@ namespace bytebank.Funcionarios
         {            
             return this.Salario * 0.10;
         }
+
+        public virtual double PremioSemestral()
+        {
+            return this.Salario * 0.20;
+        }
     }
 }
