@@ -171,16 +171,19 @@ UsarSistema();
 void UsarSistema()
 {
     SistemaInterno sistema = new SistemaInterno();
+
     Diretor ingrid = new Diretor("852147951");
     ingrid.Nome = "Ingrid Novaes";
+    ingrid.Login = "ingrid@bytebank.com";
     ingrid.Senha = "123";
 
     GerenteDeContas ursula = new GerenteDeContas("357159852");
     ursula.Nome = "Ursula Alcantara";
+    ursula.Login = "ursula@bytebank.com";
     ursula.Senha = "321";
     
-    sistema.Logar(ingrid, "123");
-    sistema.Logar(ursula, "963");
+    sistema.Logar(ingrid, ingrid.Login, "123");
+    sistema.Logar(ursula, ursula.Login, "963");
  
 }
 

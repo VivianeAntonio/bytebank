@@ -9,9 +9,10 @@ namespace bytebank.SistemaInterno
 {
     public abstract class Autenticavel : Funcionario
     {
+        public string Login { get; set; }
         public string Senha { get; set; }
 
-        public abstract bool Autenticar(string senha);
+        public abstract bool Autenticar(string login, string senha);
 
         public Autenticavel(string cpf, double salario) : base(cpf, salario)
         {
