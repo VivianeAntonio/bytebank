@@ -1,6 +1,7 @@
 ﻿using bytebank;
 using bytebank.Contas;
 using bytebank.Funcionarios;
+using bytebank.Parceria;
 using bytebank.SistemaInterno;
 using bytebank.Titular;
 using bytebank.Utilitario;
@@ -181,10 +182,16 @@ void UsarSistema()
     ursula.Nome = "Ursula Alcantara";
     ursula.Login = "ursula@bytebank.com";
     ursula.Senha = "321";
-    
+
+    ParceiroComercial caio = new ParceiroComercial();
+    caio.Login = "caio@empresa.com";
+    caio.Senha = "852";
+
     sistema.Logar(ingrid, ingrid.Login, "123");
     sistema.Logar(ursula, ursula.Login, "963");
- 
+    sistema.Logar(caio, caio.Login, "852");
+
+
 }
 
 #endregion
