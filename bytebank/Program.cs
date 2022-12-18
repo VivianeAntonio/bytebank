@@ -1,10 +1,11 @@
 ﻿using bytebank;
 using bytebank.Contas;
 using bytebank.Funcionarios;
+using bytebank.SistemaInterno;
 using bytebank.Titular;
 using bytebank.Utilitario;
 
-#region "CONTAS"
+#region CONTAS
 //ContaCorrente contaDoAndre = new ContaCorrente();
 //contaDoAndre.titular = "Andre Silva";
 //contaDoAndre.numero_agencia = 15;
@@ -106,9 +107,9 @@ using bytebank.Utilitario;
 
 //ContaCorrente conta7 = new ContaCorrente(881, "2574-8");
 //Console.WriteLine(ContaCorrente.TotalDeContasCriadas);
-#endregion Contas
+#endregion 
 
-#region "FUNCIONARIOS" 
+#region FUNCIONARIOS 
 //Funcionario pedro = new Funcionario("123456789",2000);
 //pedro.Nome = "Pedro Malazartes";
 
@@ -135,9 +136,8 @@ using bytebank.Utilitario;
 //Console.WriteLine($"Novo salario do Roberta: {roberta.Salario}");
 #endregion 
 
-
-CalcularBonificacao();
-
+#region BONIFICACAO
+//CalcularBonificacao();
 
 void CalcularBonificacao()
 {
@@ -162,3 +162,26 @@ void CalcularBonificacao()
 
     Console.WriteLine($"Total de bonificação: {gerenciador.TotalDeBonificacao}");
 }
+#endregion
+
+#region AUTENTICACAO
+
+UsarSistema();
+
+void UsarSistema()
+{
+    SistemaInterno sistema = new SistemaInterno();
+    Diretor ingrid = new Diretor("852147951");
+    ingrid.Nome = "Ingrid Novaes";
+    ingrid.Senha = "123";
+
+    GerenteDeContas ursula = new GerenteDeContas("357159852");
+    ursula.Nome = "Ursula Alcantara";
+    ursula.Senha = "321";
+    
+    sistema.Logar(ingrid, "123");
+    sistema.Logar(ursula, "963");
+ 
+}
+
+#endregion

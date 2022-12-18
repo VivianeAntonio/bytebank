@@ -23,6 +23,6 @@ namespace bytebank.Funcionarios
         public abstract double GetBonificacao();
 
         public abstract void AumentarSalario();
-        
+                
     }
 }
