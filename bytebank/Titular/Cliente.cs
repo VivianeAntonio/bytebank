@@ -9,7 +9,18 @@ namespace bytebank.Titular
     public class Cliente
     {
         public string Nome { get; set; }
-        public string Cpf { get; set; }
+        public string _cpf { get; set; }
+        public string CPF
+        {
+            get
+            {
+                return _cpf;
+            }
+            set
+            {
+                _cpf = value;
+            }
+        }
         public string Profissao { get; set; }
 
         public Cliente()

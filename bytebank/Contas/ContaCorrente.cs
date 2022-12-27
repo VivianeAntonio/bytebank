@@ -10,19 +10,22 @@ namespace bytebank.Contas
     public class ContaCorrente
     {
         public static int TotalDeContasCriadas { get; private set; }
-        public int numero_agencia;
-        public int Numero_agencia
+        public static double TaxaOperacao { get; private set; }
+
+        private int _agencia;
+        public int Agencia
         {
-            get { return this.numero_agencia; }
+            get { return this._agencia; }
             private set
             {
                 if (value > 0)
                 {
-                    this.numero_agencia = value;
+                    this._agencia = value;
                 }
             }
         }
-        public string Conta { get; set; }
+
+        public int Conta { get; }
         public Cliente Titular { get; set; }
         public double saldo = 100;
 
@@ -31,30 +34,38 @@ namespace bytebank.Contas
             this.saldo += valor;
         }
 
-        public bool Sacar(double valor)
+        public void Sacar(double valor)
         {
-            if (valor <= this.saldo)
-            {
-                this.saldo -= valor;
-                return true;
+            if (saldo < valor)
+            {                
+                throw new SaldoInsuficienteException("Saldo Insuficiente para saque no valor de " +  valor);                
             }
             else
             {
-                return false;
+                saldo -= valor;
             }
+
+            if (valor < 0)
+            {
+                throw new ArgumentException("Valor de saque não pode ser negativo", nameof(valor));
+            }
+            if (saldo < valor)
+            {
+                throw new SaldoInsuficienteException(saldo, valor);
+            }
+            saldo -= valor;
         }
 
-        public bool Transferir(double valor, ContaCorrente destino)
+        public void Transferir(double valor, ContaCorrente destino)
         {
-            if (this.saldo < valor)
+            if (valor < 0)
             {
-                return false;
+                throw new ArgumentException("Valor inválido para a transferência.", nameof(valor));
             }
             else
             {
                 this.Sacar(valor);
-                destino.Depositar(valor);
-                return true;
+                destino.Depositar(valor);                
             }
         }
 
@@ -62,7 +73,7 @@ namespace bytebank.Contas
         {
             Console.WriteLine("Titular :" + Titular);
             Console.WriteLine("Conta :" + Conta);
-            Console.WriteLine("Número Agência :" + numero_agencia);
+            Console.WriteLine("Número Agência :" + _agencia);
             Console.WriteLine("Saldo: " + saldo);
         }
 
@@ -83,10 +94,21 @@ namespace bytebank.Contas
             return this.saldo;
         }
 
-        public ContaCorrente(int numero_agencia, string numero_conta)
+        public ContaCorrente(int numero_agencia, int numero_conta)
         {
-            this.Numero_agencia = numero_agencia;
+            this.Agencia = numero_agencia;
             this.Conta = numero_conta;
+
+            //TaxaOperacao = 30 / TotalDeContasCriadas;
+
+            if (numero_agencia <= 0)
+            {
+                throw new ArgumentException("O argumento agência deve ser maior que 0.", nameof(numero_agencia));
+            }
+            if (numero_conta <= 0)
+            {
+                throw new ArgumentException("O argumento conta deve ser maior que 0.", nameof(numero_conta));
+            }
             TotalDeContasCriadas++;
         }
 

@@ -167,7 +167,7 @@ void CalcularBonificacao()
 
 #region AUTENTICACAO
 
-UsarSistema();
+//UsarSistema();
 
 void UsarSistema()
 {
@@ -193,5 +193,31 @@ void UsarSistema()
 
 
 }
+
+#endregion
+
+#region EXCECOES
+try
+{
+    ContaCorrente conta = new ContaCorrente(6955, 5540);
+    conta.Depositar(50);
+    Console.WriteLine(conta.saldo);
+    conta.Sacar(-5);
+    Console.WriteLine(conta.saldo);
+
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine("Erro no parâmetro: " + ex.ParamName);
+    Console.WriteLine("Ocorreu um erro do tipo ArgumentException.");
+    Console.WriteLine(ex.Message);
+}
+catch (SaldoInsuficienteException ex)
+{
+    Console.WriteLine(ex.Message);
+    Console.WriteLine("Exceção do tipo SaldoInsuficienteException");
+}
+
+
 
 #endregion
