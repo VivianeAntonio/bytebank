@@ -197,27 +197,73 @@ void UsarSistema()
 #endregion
 
 #region EXCECOES
-try
+
+//Metodo();
+
+void Metodo()
 {
-    ContaCorrente conta = new ContaCorrente(6955, 5540);
-    conta.Depositar(50);
-    Console.WriteLine(conta.saldo);
-    conta.Sacar(-5);
-    Console.WriteLine(conta.saldo);
+    try
+    {
+        ContaCorrente conta = new ContaCorrente(6955, 5540);
+        ContaCorrente conta2 = new ContaCorrente(5478, 6985);
+
+        conta.Depositar(50);
+        Console.WriteLine(conta.saldo);
+        //conta.Sacar(-5);
+        conta.Transferir(500, conta2);
+        Console.WriteLine(conta.saldo);
+
+    }
+    catch (ArgumentException ex)
+    {
+        Console.WriteLine("Erro no parâmetro: " + ex.ParamName);
+        Console.WriteLine("Ocorreu um erro do tipo ArgumentException.");
+        Console.WriteLine(ex.StackTrace);
+        Console.WriteLine(ex.Message);
+    }
+    catch (OperacaoFinanceiraException ex)
+    {
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.StackTrace);
+
+        Console.WriteLine("Informações da INNER EXCEPTION (exceção interna):");
+
+        Console.WriteLine(ex.InnerException.Message);
+        Console.WriteLine(ex.InnerException.StackTrace);
+    }
+}
+#endregion
+
+#region LEITOR DE ARQUIVO
+
+CarregarContas();
+
+static void CarregarContas()
+{
+    LeitorDeArquivo leitor = new LeitorDeArquivo("contas.txt");
+
+    try
+    {
+        leitor.LerProximaLinha();
+        leitor.LerProximaLinha();
+        leitor.LerProximaLinha();
+    }
+    catch (IOException e)
+    {
+        Console.WriteLine("Exceção do tipo IOException capturada e tratada.");
+    }
+    finally
+    {
+        leitor.Dispose();
+    }
 
 }
-catch (ArgumentException ex)
-{
-    Console.WriteLine("Erro no parâmetro: " + ex.ParamName);
-    Console.WriteLine("Ocorreu um erro do tipo ArgumentException.");
-    Console.WriteLine(ex.Message);
-}
-catch (SaldoInsuficienteException ex)
-{
-    Console.WriteLine(ex.Message);
-    Console.WriteLine("Exceção do tipo SaldoInsuficienteException");
-}
 
-
+using (LeitorDeArquivo leitor = new LeitorDeArquivo("contas.txt"))
+{
+    leitor.LerProximaLinha();
+    leitor.LerProximaLinha();
+    leitor.LerProximaLinha();
+}
 
 #endregion
